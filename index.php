@@ -1,5 +1,5 @@
 <?php
-require 'ClassConnectApi.php';
+require 'ClassConnectRestApi.php';
  error_reporting(E_ERROR | E_WARNING | E_PARSE | E_ALL); 
  ini_set("memory_limit", "1000M");
 
@@ -13,7 +13,7 @@ try {
        // $url = "https://gorest.co.in/public-api/users/1512";
        // $url = "http://localhost/ConnectApi/test.php";
         
-        $api = new ClassConnectApi($url); 
+        $api = new ClassConnectRestApi($url); 
      
      $api->protokol = "http";
      $api->method   = "GET";
@@ -61,6 +61,8 @@ try {
           // DELETE
          $dec->{"code"} == "204"){
          echo "Połączenie udane GET, POST, PUT, DELETE";
+       }else{
+           echo $dec->{"code"}." Błąd połączenia";
        }
        // print_r($dec->{"meta"}->{"pagination"}->{"pages"});
           if($dec->{"code"} == "401"){
